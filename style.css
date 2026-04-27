@@ -1,0 +1,90 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body { 
+  display: flex; flex-direction: column; height: 100vh; width: 100vw; 
+  background-color: #fcfcfc; color: #333; overflow: hidden; 
+}
+
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 30px; border-bottom: 2px solid #555; background-color: #fff;
+}
+.logo-img {
+  height: 40px; 
+  width: auto;
+  object-fit: contain;
+}
+.nav-links a { margin-left: 20px; text-decoration: none; color: #333; font-weight: bold; font-size: 18px; }
+.nav-links a.active { color: #0077b6; }
+
+.sub-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 30px; border-bottom: 2px solid #555; background-color: #fff;
+}
+.sub-header h2 { color: #4a8b9f; font-size: 20px; text-transform: uppercase; }
+.btn-teal {
+  background-color: #00b4d8; color: white; border: none;
+  padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 15px;
+}
+.btn-teal:hover { background-color: #0096b4; }
+
+.main-layout { display: flex; flex: 1; overflow: hidden; }
+
+.sidebar { 
+  width: 250px; border-right: 2px solid #555; display: flex; flex-direction: column; 
+  background: #fff; overflow-y: auto; 
+}
+.sidebar-item {
+  padding: 25px 20px; text-align: center; border-bottom: 1px solid #555; cursor: pointer; font-size: 18px; color: #444;
+}
+.sidebar-item:hover { background-color: #f0f0f0; }
+.sidebar-item.active { background-color: #fff; font-weight: bold; border-left: 6px solid #00b4d8; }
+
+.content-area { flex: 1; padding: 40px; display: flex; flex-direction: column; overflow-y: auto; background-color: #fcfcfc; }
+
+.prof-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.prof-header h3 { font-size: 26px; color: #333; }
+.prof-tags span { margin-left: 20px; color: #666; font-size: 16px; }
+
+.opinion-box { 
+  border: 1px solid #333; padding: 30px; margin-bottom: 30px; line-height: 1.8; color: #111; background-color: #fff; font-size: 16px;
+}
+
+.ratings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.rating-row { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 350px;}
+.rating-row label, .rating-row span { font-weight: bold; font-size: 16px; }
+
+.rankeo { display: flex; gap: 4px; }
+.star { font-size: 26px; color: #bbb; cursor: pointer; transition: color 0.2s; }
+.star.checked, .star:hover { color: #ffd700; }
+.star.readonly { cursor: default; }
+
+.action-center { text-align: center; margin-top: 20px; }
+.btn-red {
+  background-color: #d32f2f; color: white; border: 2px solid #b71c1c;
+  padding: 12px 60px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.2s;
+}
+.btn-red:hover { background-color: #b71c1c; }
+
+.form-container { display: none; max-width: 800px; margin: 0 auto; width: 100%; background: #fff; padding: 30px; border: 1px solid #ccc; }
+.form-container h3 { margin-bottom: 25px; color: #333; text-align: center; font-size: 22px; }
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
+.form-group label { font-weight: bold; margin-bottom: 8px; font-size: 15px; }
+
+.form-group input, .form-group textarea, .form-group select {
+  padding: 12px; border: 1px solid #777; border-radius: 4px; font-family: inherit; width: 100%; font-size: 15px; background: #fff;
+}
+
+.btn-submit { background-color: #4a8b9f; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: bold; border-radius: 4px; margin-top: 20px; font-size: 16px; transition: 0.3s;}
+.btn-submit:disabled { background-color: #ccc; cursor: not-allowed; color: #666; }
+.mensaje-error { display: none; color: #d32f2f; font-size: 14px; margin-bottom: 15px; font-weight: bold; }
+
+footer { 
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 30px; border-top: 2px solid #555; font-size: 13px; color: #666; background: #fff; 
+}
+.footer-left { line-height: 1.5; }
+.footer-links span { margin-left: 20px; cursor: pointer; }
+.footer-links span:hover { text-decoration: underline; }
+
+

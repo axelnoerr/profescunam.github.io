@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProfesC - Mis Opiniones</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+       <img src="Logo.png" alt="Logo" class="logo-img">
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Opiniones</a>
+      <a href="#">Profesores</a>
+      <a href="Login.html">Perfil</a>
+    </nav>
+  </header>
+
+  <div class="sub-header">
+
+    <h2> MIS OPINIONES </h2>
+    <button class="btn-teal" id="btn-abrir-formulario">Añadir Profesor</button>
+
+  </div>
+
+  <main class="main-layout">
+    
+    <aside class="sidebar" id="lista-profesores"></aside> 
+    <section class="content-area">
+      
+      <div id="vista-detalles">
+        <div id="contenido-detalles">
+          <h3 style="text-align:center; color:#888; margin-top:100px; font-weight: normal;">
+            Aún no hay opiniones registradas.
+          </h3>
+        </div>
+      </div>
+
+      <div class="form-container" id="vista-formulario" style="display: none;">
+        <h3>Añadir Nueva Opinión</h3>
+        <form id="formulario-profesor">
+          
+          <div class="form-group" style="display: flex; gap: 20px;">
+            <div style="flex: 1;">
+              <label>Nombre(s)</label>
+              <input type="text" id="in-nombre" required>
+            </div>
+            <div style="flex: 1;">
+              <label>Apellido Paterno</label>
+              <input type="text" id="in-paterno" required>
+            </div>
+            <div style="flex: 1;">
+              <label>Apellido Materno</label>
+              <input type="text" id="in-materno" required>
+            </div>
+          </div>
+          
+          <div class="form-group" style="display: flex; gap: 20px;">
+            <div style="flex: 1;">
+              <label>Carrera</label>
+              <input type="text" id="in-carrera" required>
+            </div>
+            <div style="flex: 1;">
+              <label>Materia</label>
+              <input type="text" id="in-materia" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Opinión</label>
+            <textarea id="in-opinion" rows="4" required></textarea>
+          </div>
+          
+          <div class="ratings-grid">
+            <div class="rating-row">
+              <label>Empatía:</label>
+              <div class="rankeo interactivo" data-categoria="empatia">
+                <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
+              </div>
+            </div>
+            <div class="rating-row">
+              <label>Evaluación:</label>
+              <div class="rankeo interactivo" data-categoria="evaluacion">
+                <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
+              </div>
+            </div>
+            <div class="rating-row">
+              <label>Actitud:</label>
+              <div class="rankeo interactivo" data-categoria="actitud">
+                <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
+              </div>
+            </div>
+            <div class="rating-row">
+              <label>Dificultad:</label>
+              <div class="rankeo interactivo" data-categoria="dificultad">
+                <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
+              </div>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn-submit">Guardar Opinión</button>
+          <button type="button" class="btn-red" id="btn-cancelar" style="margin-top: 10px; width: 100%;">Cancelar</button>
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-left"><i class="bi bi-globe"></i> Español <br> ©PROFESC 2026</div>
+    <div class="footer-links">
+      <span>Condiciones del servicio</span>
+      <span>Términos y condiciones generales</span>
+      <span>Política de privacidad</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
