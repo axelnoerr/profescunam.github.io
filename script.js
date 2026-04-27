@@ -52,15 +52,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 async function pruebaFirebase() {
-  console.log("CLICK funcionando 🔥");
+  console.log("Registrado");
 
   try {
     await addDoc(collection(db, "test"), {
-      mensaje: "hola desde tu app 😏",
+      mensaje: "Hola peruanos",
       fecha: new Date()
     });
 
-    console.log("🔥 Guardado en Firebase");
+    console.log("Ya se guardo esta madre caw");
     alert("Guardado");
   } catch (error) {
     console.error("ERROR:", error);
