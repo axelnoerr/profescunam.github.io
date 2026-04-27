@@ -49,7 +49,8 @@ const firebaseConfig = {
   appId: "1:107690490261:web:757abbea47cd533d0a5e9c",
   measurementId: "G-9V097M6VTS"
 };
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 window.pruebaFirebase = async () => {
   alert("Click detectado 👀");
 
