@@ -51,16 +51,18 @@ const firebaseConfig = {
 };
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 window.pruebaFirebase = async () => {
+  alert("Click detectado 👀");
+
   try {
     await addDoc(collection(db, "test"), {
-      mensaje: "Hola Peruanos wuuuu",
+      mensaje: "hola desde tu app 😏",
       fecha: new Date()
     });
 
-    alert("Se guardó en Firebase");
+    alert("🔥 Se guardó en Firebase");
   } catch (error) {
     console.error(error);
-    alert("Error ):");
+    alert("Error 😢");
   }
 };
 
