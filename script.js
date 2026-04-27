@@ -52,7 +52,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 window.pruebaFirebase = async () => {
-  alert("Click detectado 👀");
+  console.log("CLICK funcionando 🔥");
 
   try {
     await addDoc(collection(db, "test"), {
@@ -60,10 +60,10 @@ window.pruebaFirebase = async () => {
       fecha: new Date()
     });
 
-    alert("🔥 Se guardó en Firebase");
+    console.log("🔥 Guardado en Firebase");
+    alert("Guardado");
   } catch (error) {
-    console.error(error);
-    alert("Error 😢");
+    console.error("ERROR:", error);
   }
 };
 document.getElementById("btnPrueba").addEventListener("click", pruebaFirebase);
