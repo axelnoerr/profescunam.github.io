@@ -66,4 +66,5 @@ window.pruebaFirebase = async () => {
     alert("Error 😢");
   }
 };
+document.getElementById("btnPrueba").addEventListener("click", pruebaFirebase);
 
