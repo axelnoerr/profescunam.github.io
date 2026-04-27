@@ -1,3 +1,5 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 const vistaDetalles = document.getElementById('vista-detalles');
 const vistaFormulario = document.getElementById('vista-formulario');
 const formulario = document.getElementById('formulario-profesor');
@@ -38,5 +40,27 @@ function limpiarEstrellasFormulario() {
   calificacionesActuales = { empatia: 0, evaluacion: 0, actitud: 0, dificultad: 0 };
   document.querySelectorAll('.rankeo.interactivo .star').forEach(s => s.classList.remove('checked'));
 }
+const firebaseConfig = {
+  apiKey: "AIzaSyBYdWrpnpAs32OG6IpDd4h_t9HBVzHFjVY",
+  authDomain: "profesc.firebaseapp.com",
+  projectId: "profesc",
+  storageBucket: "profesc.firebasestorage.app",
+  messagingSenderId: "107690490261",
+  appId: "1:107690490261:web:757abbea47cd533d0a5e9c",
+  measurementId: "G-9V097M6VTS"
+};
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+window.pruebaFirebase = async () => {
+  try {
+    await addDoc(collection(db, "test"), {
+      mensaje: "Hola Peruanos wuuuu",
+      fecha: new Date()
+    });
 
+    alert("Se guardó en Firebase");
+  } catch (error) {
+    console.error(error);
+    alert("Error ):");
+  }
+};
 
