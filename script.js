@@ -61,7 +61,7 @@ async function pruebaFirebase() {
     });
 
     console.log("Ya se guardo esta madre caw");
-    alert("Guardado");
+    alert("Guardado caw");
   } catch (error) {
     console.error("ERROR:", error);
   }
