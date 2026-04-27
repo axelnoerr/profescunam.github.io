@@ -10,6 +10,31 @@ document.getElementById('btn-abrir-formulario').addEventListener('click', () => 
   formulario.reset();
   limpiarEstrellasFormulario();
 });
+formulario.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const datos = {
+    nombre: document.getElementById('in-nombre').value,
+    paterno: document.getElementById('in-paterno').value,
+    materno: document.getElementById('in-materno').value,
+    carrera: document.getElementById('in-carrera').value,
+    materia: document.getElementById('in-materia').value,
+    opinion: document.getElementById('in-opinion').value,
+    calificaciones: calificacionesActuales,
+    fecha: new Date()
+  };
+  try {
+    await addDoc(collection(db, "opiniones"), datos);
+    alert("🔥 Opinión guardada");
+    formulario.reset();
+    limpiarEstrellasFormulario();
+    vistaFormulario.style.display = 'none';
+    vistaDetalles.style.display = 'block';
+
+  } catch (error) {
+    console.error(error);
+    alert("Error al guardar 😢");
+  }
+});
 
 document.getElementById('btn-cancelar').addEventListener('click', () => {
   vistaFormulario.style.display = 'none';
