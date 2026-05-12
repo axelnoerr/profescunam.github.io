@@ -92,5 +92,35 @@ async function pruebaFirebase() {
     console.error("ERROR:", error);
   }
 };
+async function cargarOpiniones() {
+  const contenedor = document.getElementById("contenedor-opiniones");
+  contenedor.innerHTML = "";
+  const querySnapshot = await getDocs(collection(db, "opiniones"));
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    const card = document.createElement("div");
+    card.classList.add("card-opinion");
+    card.innerHTML = `
+      <h3>${data.nombre} ${data.paterno}</h3>
+      <p><strong>Materia:</strong> ${data.materia}</p>
+      <p>${data.opinion}</p>
+      <div>
+        ⭐ Empatía: ${data.calificaciones.empatia}
+      </div>
+      <div>
+        ⭐ Evaluación: ${data.calificaciones.evaluacion}
+      </div>
+      <div>
+        ⭐ Actitud: ${data.calificaciones.actitud}
+      </div>
+      <div>
+        ⭐ Dificultad: ${data.calificaciones.dificultad}
+      </div>
+      <hr>
+    `;
+    contenedor.appendChild(card);
+  });
+}
+cargarOpiniones();
 
 
