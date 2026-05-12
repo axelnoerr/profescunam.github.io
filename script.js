@@ -93,39 +93,24 @@ async function pruebaFirebase() {
   }
 };
 async function cargarOpiniones() {
-
   console.log("🔥 Cargando opiniones");
-
-  const contenedor = document.getElementById("contenedor-opiniones");
-
+ const contenedor = document.getElementById("contenido-detalles");
   console.log(contenedor);
-
   contenedor.innerHTML = "";
-
   const querySnapshot = await getDocs(collection(db, "opiniones"));
-
   console.log(querySnapshot);
-
   querySnapshot.forEach((doc) => {
-
     console.log(doc.data());
-
     const data = doc.data();
-
     const card = document.createElement("div");
-
     card.classList.add("card-opinion");
-
     card.innerHTML = `
       <h3>${data.nombre} ${data.paterno}</h3>
       <p><strong>Materia:</strong> ${data.materia}</p>
       <p>${data.opinion}</p>
     `;
-
     contenedor.appendChild(card);
-
   });
-
 }
 document.addEventListener("DOMContentLoaded", () => {
   cargarOpiniones();
