@@ -1,8 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 const vistaDetalles = document.getElementById('vista-detalles');
 const vistaFormulario = document.getElementById('vista-formulario');
 const formulario = document.getElementById('formulario-profesor');
+
 
 document.getElementById('btn-abrir-formulario').addEventListener('click', () => {
   vistaDetalles.style.display = 'none';
@@ -91,5 +92,5 @@ async function pruebaFirebase() {
     console.error("ERROR:", error);
   }
 };
-document.getElementById("btnPrueba").addEventListener("click", pruebaFirebase);
+
 
