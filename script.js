@@ -104,11 +104,20 @@ async function cargarOpiniones() {
     const data = doc.data();
     const card = document.createElement("div");
     card.classList.add("card-opinion");
-    card.innerHTML = `
-      <h3>${data.nombre} ${data.paterno}</h3>
-      <p><strong>Materia:</strong> ${data.materia}</p>
-      <p>${data.opinion}</p>
-    `;
+   card.innerHTML = `
+  <h2>${data.nombre} ${data.paterno} ${data.materno}</h2>
+  <p><strong>Carrera:</strong> ${data.carrera}</p>
+  <p><strong>Materia:</strong> ${data.materia}</p>
+  <p style="margin-top:15px;">
+    ${data.opinion}
+  </p>
+  <div class="ratings">
+    <p>⭐ Empatía: ${data.calificaciones.empatia}/5</p>
+    <p>⭐ Evaluación: ${data.calificaciones.evaluacion}/5</p>
+    <p>⭐ Actitud: ${data.calificaciones.actitud}/5</p>
+    <p>⭐ Dificultad: ${data.calificaciones.dificultad}/5</p>
+  </div>
+`;
     contenedor.appendChild(card);
   });
 }
