@@ -93,34 +93,43 @@ async function pruebaFirebase() {
   }
 };
 async function cargarOpiniones() {
+
+  console.log("🔥 Cargando opiniones");
+
   const contenedor = document.getElementById("contenedor-opiniones");
+
+  console.log(contenedor);
+
   contenedor.innerHTML = "";
+
   const querySnapshot = await getDocs(collection(db, "opiniones"));
+
+  console.log(querySnapshot);
+
   querySnapshot.forEach((doc) => {
+
+    console.log(doc.data());
+
     const data = doc.data();
+
     const card = document.createElement("div");
+
     card.classList.add("card-opinion");
+
     card.innerHTML = `
       <h3>${data.nombre} ${data.paterno}</h3>
       <p><strong>Materia:</strong> ${data.materia}</p>
       <p>${data.opinion}</p>
-      <div>
-        ⭐ Empatía: ${data.calificaciones.empatia}
-      </div>
-      <div>
-        ⭐ Evaluación: ${data.calificaciones.evaluacion}
-      </div>
-      <div>
-        ⭐ Actitud: ${data.calificaciones.actitud}
-      </div>
-      <div>
-        ⭐ Dificultad: ${data.calificaciones.dificultad}
-      </div>
-      <hr>
     `;
+
     contenedor.appendChild(card);
+
   });
+
 }
-cargarOpiniones();
+document.addEventListener("DOMContentLoaded", () => {
+  cargarOpiniones();
+});
+
 
 
