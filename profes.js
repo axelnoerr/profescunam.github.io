@@ -139,3 +139,6 @@ async function cargarProfesores() {
   function irMisOpiniones() {
     window.location.href = "index.html";
   }
+window.verProfesor = verProfesor;
+window.volver = volver;
+window.irMisOpiniones = irMisOpiniones;
