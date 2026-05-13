@@ -122,26 +122,16 @@ function verProfesor(nombre) {
   }
   // Buscar
  const buscador = document.getElementById("buscador");
-
 buscador.addEventListener("keyup", function () {
-
   const texto = buscador.value.toLowerCase();
-
   console.log("BUSCANDO:", texto);
-
   const filtrados = profesoresData.filter((prof) => {
-
     console.log("PROF:", prof.nombre);
-
     return prof.nombre.toLowerCase().includes(texto);
-
   });
-
   console.log("FILTRADOS:", filtrados);
-
   renderLista(filtrados);
-
-}); 
+});
   cargarProfesores();
   function irMisOpiniones() {
     window.location.href = "index.html";
