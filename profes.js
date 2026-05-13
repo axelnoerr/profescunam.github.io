@@ -116,17 +116,15 @@ function verProfesor(nombre) {
     document.getElementById("perfil-profesor").classList.add("hidden");
     document.getElementById("lista-general").classList.remove("hidden");
   }
-  
   // Buscar
-  document.getElementById("buscador").addEventListener("input", e => {
-    const texto = e.target.value.toLowerCase();
-  
-    const filtrados = profesoresData.filter(p =>
-      p.nombre.toLowerCase().includes(texto)
-    );
+ document.getElementById("buscador").addEventListener("input", e => {
+  const texto = e.target.value.toLowerCase();
+  const filtrados = profesoresData.filter(p =>
+    p.nombre.toLowerCase().includes(texto)
+  );
   console.log(profesoresData);
-    renderLista(filtrados);
-  });  
+  renderLista(filtrados);
+});  
   cargarProfesores();
   function irMisOpiniones() {
     window.location.href = "index.html";
