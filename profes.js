@@ -30,8 +30,6 @@ const profesoresData = [
       ]
     }
   ];
-  
-  // Estrellas
   function pintarEstrellas(num) {
     let html = "";
     for (let i = 1; i <= 5; i++) {
@@ -59,8 +57,18 @@ const profesoresData = [
       `;
     });
   }
-  
-  // Perfil
+  const firebaseConfig = {
+  apiKey: "AIzaSyBYdWrpnpAs32OG6IpDd4h_t9HBVzHFjVY",
+  authDomain: "profesc.firebaseapp.com",
+  projectId: "profesc",
+  storageBucket: "profesc.firebasestorage.app",
+  messagingSenderId: "107690490261",
+  appId: "1:107690490261:web:757abbea47cd533d0a5e9c",
+  measurementId: "G-9V097M6VTS"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
   function verProfesor(index) {
     const prof = profesoresData[index];
   
