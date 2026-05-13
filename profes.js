@@ -117,14 +117,27 @@ function verProfesor(nombre) {
     document.getElementById("lista-general").classList.remove("hidden");
   }
   // Buscar
- document.getElementById("buscador").addEventListener("input", e => {
-  const texto = e.target.value.toLowerCase();
-  const filtrados = profesoresData.filter(p =>
-    p.nombre.toLowerCase().includes(texto)
-  );
-  console.log(profesoresData);
+ const buscador = document.getElementById("buscador");
+
+buscador.addEventListener("keyup", function () {
+
+  const texto = buscador.value.toLowerCase();
+
+  console.log("BUSCANDO:", texto);
+
+  const filtrados = profesoresData.filter((prof) => {
+
+    console.log("PROF:", prof.nombre);
+
+    return prof.nombre.toLowerCase().includes(texto);
+
+  });
+
+  console.log("FILTRADOS:", filtrados);
+
   renderLista(filtrados);
-});  
+
+}); 
   cargarProfesores();
   function irMisOpiniones() {
     window.location.href = "index.html";
