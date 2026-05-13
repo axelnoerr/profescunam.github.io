@@ -126,7 +126,6 @@ function verProfesor(nombre) {
   renderLista(filtrados);
 });  
   cargarProfesores();
-activarBuscador();
   function irMisOpiniones() {
     window.location.href = "index.html";
   }
