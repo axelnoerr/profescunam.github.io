@@ -15,7 +15,7 @@ function renderLista(data = profesoresData) {
   cont.innerHTML = "";
   data.forEach((prof) => {
     cont.innerHTML += `
-      <div class="prof-card" onclick="verProfesor('${prof.nombre}')">
+      <div class="prof-card" data-nombre="${prof.nombre}">
         <div class="prof-info">
           <i class="bi bi-person-circle"></i>
           <h3>${prof.nombre}</h3>
@@ -23,9 +23,13 @@ function renderLista(data = profesoresData) {
         <div class="estrellas">
           ${pintarEstrellas(prof.rating)}
         </div>
-
       </div>
     `;
+  });
+  document.querySelectorAll(".prof-card").forEach(card => {
+    card.addEventListener("click", () => {
+      verProfesor(card.dataset.nombre);
+    });
   });
 }
   const firebaseConfig = {
