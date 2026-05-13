@@ -129,7 +129,7 @@ async function cargarProfesores() {
     const filtrados = profesoresData.filter(p =>
       p.nombre.toLowerCase().includes(texto)
     );
-  
+  console.log(profesoresData);
     renderLista(filtrados);
   });
   
