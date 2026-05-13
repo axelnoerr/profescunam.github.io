@@ -1,35 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {getFirestore,collection,getDocs} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-const profesoresData = [
-    {
-      nombre: "Profesor A",
-      rating: 4,
-      opiniones: [
-        {
-          alumno: "Juan",
-          texto: "Explica muy bien",
-          empatia: 4,
-          actitud: 5,
-          dificultad: 3,
-          evaluacion: 4
-        }
-      ]
-    },
-    {
-      nombre: "Profesor B",
-      rating: 3,
-      opiniones: [
-        {
-          alumno: "Ana",
-          texto: "Un poco estricto",
-          empatia: 3,
-          actitud: 3,
-          dificultad: 4,
-          evaluacion: 3
-        }
-      ]
-    }
-  ];
+
   function pintarEstrellas(num) {
     let html = "";
     for (let i = 1; i <= 5; i++) {
@@ -68,6 +39,46 @@ const profesoresData = [
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+let profesoresData = [];
+async function cargarProfesores() {
+  const querySnapshot = await getDocs(collection(db, "opiniones"));
+  const mapaProfes = {};
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    const nombreCompleto =
+      `${data.nombre} ${data.paterno}`.trim();
+    if (!mapaProfes[nombreCompleto]) {
+      mapaProfes[nombreCompleto] = {
+        nombre: nombreCompleto,
+        opiniones: [],
+        rating: 0
+      };
+    }
+    mapaProfes[nombreCompleto].opiniones.push({
+      alumno: data.carrera,
+      texto: data.opinion,
+      empatia: data.calificaciones.empatia,
+      actitud: data.calificaciones.actitud,
+      dificultad: data.calificaciones.dificultad,
+      evaluacion: data.calificaciones.evaluacion
+    });
+  });
+  profesoresData = Object.values(mapaProfes);
+  profesoresData.forEach(prof => {
+    let suma = 0;
+    let total = 0;
+    prof.opiniones.forEach(op => {
+      suma +=
+        op.empatia +
+        op.actitud +
+        op.dificultad +
+        op.evaluacion;
+      total += 4;
+    });
+    prof.rating = Math.round(suma / total);
+  });
+  cargarProfesores();
+}
 
   function verProfesor(index) {
     const prof = profesoresData[index];
