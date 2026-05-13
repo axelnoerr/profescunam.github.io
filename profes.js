@@ -77,7 +77,7 @@ async function cargarProfesores() {
     });
     prof.rating = Math.round(suma / total);
   });
-  cargarProfesores();
+  renderLista();
 }
 
 function verProfesor(nombre) {
@@ -126,11 +126,8 @@ function verProfesor(nombre) {
     );
   console.log(profesoresData);
     renderLista(filtrados);
-  });
-  
- 
-  renderLista();
-  
+  });  
+  cargarProfesores();
   function irMisOpiniones() {
     window.location.href = "index.html";
   }
