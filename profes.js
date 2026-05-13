@@ -10,24 +10,24 @@ import {getFirestore,collection,getDocs} from "https://www.gstatic.com/firebasej
   }
   
   // Lista
-  function renderLista(data = profesoresData) {
-    const cont = document.getElementById("lista-general");
-    cont.innerHTML = "";
-  
-    data.forEach((prof, index) => {
-      cont.innerHTML += `
-        <div class="prof-card" onclick="verProfesor(${index})">
-          <div class="prof-info">
-            <i class="bi bi-person-circle"></i>
-            <h3>${prof.nombre}</h3>
-          </div>
-          <div class="estrellas">
-            ${pintarEstrellas(prof.rating)}
-          </div>
+function renderLista(data = profesoresData) {
+  const cont = document.getElementById("lista-general");
+  cont.innerHTML = "";
+  data.forEach((prof) => {
+    cont.innerHTML += `
+      <div class="prof-card" onclick="verProfesor('${prof.nombre}')">
+        <div class="prof-info">
+          <i class="bi bi-person-circle"></i>
+          <h3>${prof.nombre}</h3>
         </div>
-      `;
-    });
-  }
+        <div class="estrellas">
+          ${pintarEstrellas(prof.rating)}
+        </div>
+
+      </div>
+    `;
+  });
+}
   const firebaseConfig = {
   apiKey: "AIzaSyBYdWrpnpAs32OG6IpDd4h_t9HBVzHFjVY",
   authDomain: "profesc.firebaseapp.com",
@@ -80,41 +80,36 @@ async function cargarProfesores() {
   cargarProfesores();
 }
 
-  function verProfesor(index) {
-    const prof = profesoresData[index];
-  
-    document.getElementById("lista-general").classList.add("hidden");
-  
-    const perfil = document.getElementById("perfil-profesor");
-    perfil.classList.remove("hidden");
-  
-    perfil.innerHTML = `
-      <button onclick="volver()">⬅ Volver</button>
-  
-      <div class="prof-header">
-        <div>
-          <h2>${prof.nombre}</h2>
-          <div class="estrellas">${pintarEstrellas(prof.rating)}</div>
+function verProfesor(nombre) {
+  const prof = profesoresData.find(p => p.nombre === nombre);
+  document.getElementById("lista-general").classList.add("hidden");
+  const perfil = document.getElementById("perfil-profesor");
+  perfil.classList.remove("hidden");
+  perfil.innerHTML = `
+    <button onclick="volver()">⬅ Volver</button>
+    <div class="prof-header">
+      <div>
+        <h2>${prof.nombre}</h2>
+        <div class="estrellas">
+          ${pintarEstrellas(prof.rating)}
         </div>
-  
-        <button class="btn-opiniones" onclick="irMisOpiniones()">
-          Agregar Opinion
-        </button>
       </div>
-  
-      ${prof.opiniones.map(op => `
-        <div class="opinion-box">
-          <strong>${op.alumno}</strong>
-          <p>${op.texto}</p>
-  
-          <div>Empatía: ${pintarEstrellas(op.empatia)}</div>
-          <div>Actitud: ${pintarEstrellas(op.actitud)}</div>
-          <div>Dificultad: ${pintarEstrellas(op.dificultad)}</div>
-          <div>Evaluación: ${pintarEstrellas(op.evaluacion)}</div>
-        </div>
-      `).join("")}
-    `;
-  }
+      <button class="btn-opiniones" onclick="irMisOpiniones()">
+        Agregar Opinion
+      </button>
+    </div>
+    ${prof.opiniones.map(op => `
+      <div class="opinion-box">
+        <strong>${op.alumno}</strong>
+        <p>${op.texto}</p>
+        <div>Empatía: ${pintarEstrellas(op.empatia)}</div>
+        <div>Actitud: ${pintarEstrellas(op.actitud)}</div>
+        <div>Dificultad: ${pintarEstrellas(op.dificultad)}</div>
+        <div>Evaluación: ${pintarEstrellas(op.evaluacion)}</div>
+      </div>
+    `).join("")}
+  `;
+}
   
   // Boton regresar
   function volver() {
@@ -133,7 +128,7 @@ async function cargarProfesores() {
     renderLista(filtrados);
   });
   
-  // Redireccionamiento
+ 
   renderLista();
   
   function irMisOpiniones() {
