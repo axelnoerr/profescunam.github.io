@@ -19,11 +19,11 @@ if (formRegistro) {
   formRegistro.addEventListener("submit", async (e) => {
     e.preventDefault();
     const nombre =
-      document.getElementById("nombre").value;
+      document.getElementById("nombre-registro").value;
     const correo =
-      document.getElementById("correo").value;
+      document.getElementById("correo-registro").value;
     const password =
-      document.getElementById("password").value;
+      document.getElementById("password-registro").value;
     try {
       const userCredential =
         await createUserWithEmailAndPassword(
@@ -54,7 +54,7 @@ if (formLogin) {
     const correo =
       document.getElementById("correo-login").value;
     const password =
-      document.getElementById("password").value;
+      document.getElementById("password-login").value;
     try {
       await signInWithEmailAndPassword(
         auth,
