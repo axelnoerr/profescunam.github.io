@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {getFirestore, doc, setDoc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
   const firebaseConfig = {
   apiKey: "AIzaSyBYdWrpnpAs32OG6IpDd4h_t9HBVzHFjVY",
@@ -93,4 +93,56 @@ btnIrRegistro.addEventListener("click", () => {
 btnIrLogin.addEventListener("click", () => {
   registro.classList.add("hidden");
   login.classList.remove("hidden");
+});
+// ELEMENTOS
+const authBox = document.getElementById("auth");
+const perfil = document.getElementById("perfil");
+const header = document.getElementById("header");
+
+const perfilNombre =
+  document.getElementById("perfil-nombre");
+
+const perfilCorreo =
+  document.getElementById("perfil-correo");
+
+// ESCUCHAR SESIÓN
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    // OCULTAR LOGIN
+    authBox.classList.add("hidden");
+
+    // MOSTRAR PERFIL
+    perfil.classList.remove("hidden");
+    header.classList.remove("hidden");
+
+    // DATOS
+    perfilNombre.value =
+      user.displayName || "Usuario";
+
+    perfilCorreo.value =
+      user.email;
+
+  } else {
+
+    // MOSTRAR LOGIN
+    authBox.classList.remove("hidden");
+
+    // OCULTAR PERFIL
+    perfil.classList.add("hidden");
+    header.classList.add("hidden");
+  }
+});
+
+// LOGOUT
+const btnLogout =
+  document.getElementById("btn-logout");
+
+btnLogout.addEventListener("click", async () => {
+
+  await signOut(auth);
+
+  alert("Sesión cerrada 👋");
+
 });
