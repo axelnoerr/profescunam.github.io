@@ -22,7 +22,7 @@ nav a.active { color: #0077b6; }
 .sub-header-sketch h2 { color: #4a8b9f; font-size: 20px; text-transform: uppercase; }
 
 /* --- PERFIL CENTRADO --- */
-.perfil { display: none; flex: 1; }
+
 .perfil-centrado { max-width: 650px; margin: 0 auto; padding: 20px; text-align: center; }
 
 .avatar-box { margin-bottom: 25px; }
