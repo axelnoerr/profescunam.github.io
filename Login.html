@@ -7,165 +7,123 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
+  <!-- AUTH -->
   <div id="auth" class="center-box">
     <div class="logo">
       <img src="Logo.png" alt="logo">
     </div>
-
-    <div id="login">
+    <!-- LOGIN -->
+    <form id="form-login">
       <h3>Iniciar sesión</h3>
-      <input id="loginUser" placeholder="Usuario">
-      <input id="loginPass" type="password" placeholder="Contraseña" autocomplete="off">
-      <button class="primary" onclick="login()">Entrar</button>
-      <p class="link" onclick="mostrarRegistro()">¿No tienes cuenta? Regístrate</p>
-    </div>
-
-    <div id="registro" class="hidden">
+      <input
+        id="correo-login"
+        type="email"
+        placeholder="Correo"
+        required
+      >
+      <input
+        id="password-login"
+        type="password"
+        placeholder="Contraseña"
+        autocomplete="off"
+        required
+      >
+      <button type="submit" class="primary">
+        Entrar
+      </button>
+      <p class="link" id="btn-ir-registro">
+        ¿No tienes cuenta? Regístrate
+      </p>
+    </form>
+    <!-- REGISTRO -->
+    <form id="form-registro" class="hidden">
       <h3>Registro</h3>
-      <input id="regUser" placeholder="Usuario">
-      <input id="regMail" placeholder="Correo">
-      <input id="regPass" type="password" placeholder="Contraseña" autocomplete="new-password">
-      <input id="regPass2" type="password" placeholder="Confirmar contraseña" autocomplete="new-password">
-      <button class="primary" onclick="registrar()">Crear cuenta</button>
-      <p class="link" onclick="mostrarLogin()">Ya tengo cuenta</p>
-    </div>
+      <input
+        id="nombre-registro"
+        type="text"
+        placeholder="Usuario"
+        required
+      >
+      <input
+        id="correo-registro"
+        type="email"
+        placeholder="Correo"
+        required
+      >
+      <input
+        id="password-registro"
+        type="password"
+        placeholder="Contraseña"
+        autocomplete="new-password"
+        required
+      >
+      <input
+        id="password2-registro"
+        type="password"
+        placeholder="Confirmar contraseña"
+        autocomplete="new-password"
+        required
+      >
+      <button type="submit" class="primary">
+        Crear cuenta
+      </button>
+      <p class="link" id="btn-ir-login">
+        Ya tengo cuenta
+      </p>
+    </form>
   </div>
-
-  <header id="header">
+  <!-- HEADER -->
+  <header id="header" class="hidden">
     <div class="logo">
       <img src="Logo.png" alt="logo">
     </div>
     <nav>
       <a href="index.html">Opiniones</a>
-      <a href="#">Profesores</a>
+      <a href="profes.html">Profesores</a>
       <a class="active">Perfil</a>
     </nav>
   </header>
-
-  <div id="perfil" class="perfil">
-    
+  <!-- PERFIL -->
+  <div id="perfil" class="perfil hidden">
     <div class="sub-header-sketch">
       <h2>Mi Perfil</h2>
     </div>
-
     <div class="perfil-centrado">
       <div class="avatar-box">
         <i class="bi bi-person-circle"></i>
       </div>
-
       <div class="datos-container">
         <div class="campo">
           <label>Nombre:</label>
-          <input id="nombre" class="input-inline" disabled>
+          <input
+            id="perfil-nombre"
+            class="input-inline"
+            disabled
+          >
         </div>
-
         <div class="campo-wrapper">
           <div class="campo">
             <label>Correo:</label>
-            <input id="correo" class="input-inline" disabled>
-          </div>
-          <div class="link-box">
-            <span class="mini-link" onclick="cambiarCorreo()">Cambiar correo</span>
-          </div>
-        </div>
-
-        <div class="campo-wrapper">
-          <div class="campo">
-            <label>Contraseña:</label>
-            <input id="password" class="input-inline" type="password" disabled placeholder="********">
-          </div>
-          <div class="link-box">
-            <span class="mini-link" onclick="flujoCambioPass()">Cambiar contraseña</span>
+            <input
+              id="perfil-correo"
+              class="input-inline"
+              disabled
+            >
           </div>
         </div>
       </div>
-
       <div class="action-zone">
-        <button class="btn-delete" onclick="eliminarCuenta()">Eliminar Cuenta</button>
+        <button class="btn-delete" id="btn-logout">
+          Cerrar sesión
+        </button>
       </div>
     </div>
   </div>
-
+  <!-- FOOTER -->
   <footer>
     © PROFESC 2026 | Términos | Privacidad
   </footer>
-
-  <script>
-    /* TU SCRIPT ORIGINAL TAL CUAL LO TENÍAS */
-    let usuarioGuardado=null;
-
-    function mostrarRegistro(){
-      document.getElementById('login').classList.add('hidden');
-      document.getElementById('registro').classList.remove('hidden');
-    }
-
-    function mostrarLogin(){
-      document.getElementById('registro').classList.add('hidden');
-      document.getElementById('login').classList.remove('hidden');
-    }
-
-    function registrar(){
-      if(regPass.value!==regPass2.value) return alert('No coinciden');
-
-      usuarioGuardado={
-        user:regUser.value,
-        mail:regMail.value,
-        pass:regPass.value
-      };
-
-      alert('Cuenta creada');
-
-      regUser.value='';
-      regMail.value='';
-      regPass.value='';
-      regPass2.value='';
-
-      mostrarLogin();
-    }
-
-    function login(){
-      if(!usuarioGuardado) return alert('No hay cuenta');
-
-      if(loginUser.value!==usuarioGuardado.user || loginPass.value!==usuarioGuardado.pass){
-        return alert('Credenciales incorrectas');
-      }
-
-      auth.style.display='none';
-      header.style.display='flex';
-      perfil.style.display='block';
-
-      nombre.value=usuarioGuardado.user;
-      correo.value=usuarioGuardado.mail;
-    }
-
-    function cambiarCorreo(){
-      let nuevo=prompt('Nuevo correo');
-      if(nuevo){
-        usuarioGuardado.mail=nuevo;
-        correo.value=nuevo;
-      }
-    }
-
-    function flujoCambioPass(){
-      let actual=prompt('Contraseña actual');
-      if(actual!==usuarioGuardado.pass) return alert('Incorrecta');
-
-      let nueva=prompt('Nueva contraseña');
-      let conf=prompt('Confirmar contraseña');
-
-      if(nueva!==conf) return alert('No coinciden');
-
-      usuarioGuardado.pass=nueva;
-      alert('Contraseña actualizada');
-    }
-
-    function eliminarCuenta(){
-      if(confirm('¿Eliminar cuenta?')) location.reload();
-    }
-  </script>
-
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
