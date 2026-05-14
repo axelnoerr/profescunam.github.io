@@ -69,3 +69,28 @@ if (formLogin) {
     }
   });
 }
+// CAMBIAR ENTRE LOGIN Y REGISTRO
+
+const btnIrRegistro =
+  document.getElementById("btn-ir-registro");
+
+const btnIrLogin =
+  document.getElementById("btn-ir-login");
+
+const login =
+  document.getElementById("form-login");
+
+const registro =
+  document.getElementById("form-registro");
+
+// MOSTRAR REGISTRO
+btnIrRegistro.addEventListener("click", () => {
+  login.classList.add("hidden");
+  registro.classList.remove("hidden");
+});
+
+// MOSTRAR LOGIN
+btnIrLogin.addEventListener("click", () => {
+  registro.classList.add("hidden");
+  login.classList.remove("hidden");
+});
