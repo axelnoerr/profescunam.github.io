@@ -52,7 +52,7 @@ if (formLogin) {
   formLogin.addEventListener("submit", async (e) => {
     e.preventDefault();
     const correo =
-      document.getElementById("correo").value;
+      document.getElementById("correo-login").value;
     const password =
       document.getElementById("password").value;
     try {
