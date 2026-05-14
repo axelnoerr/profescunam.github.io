@@ -62,7 +62,7 @@ if (formLogin) {
         password
       );
       alert("🔥 Bienvenido");
-      window.location.href = "index.html";
+      window.location.href = "Login.html";
     } catch (error) {
       console.error(error);
       alert("Correo o contraseña incorrectos");
