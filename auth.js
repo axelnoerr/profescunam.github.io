@@ -61,7 +61,7 @@ if (formLogin) {
         correo,
         password
       );
-      alert("🔥 Bienvenido");
+      alert(" Bienvenido");
       window.location.href = "Login.html";
     } catch (error) {
       console.error(error);
@@ -143,6 +143,6 @@ btnLogout.addEventListener("click", async () => {
 
   await signOut(auth);
 
-  alert("Sesión cerrada 👋");
+  alert("Sesión cerrada ");
 
 });
